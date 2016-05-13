@@ -1,2 +1,2 @@
 # ServerLibrary
-Commit -> Sync
+Commit -> Sync -> push
