@@ -62,3 +62,8 @@ SOCKET ListenSocket::Accept()
 	accept(sock_,)*/
 	return 0;
 }
+
+DWORD ListenSocket::AcceptThread(LPVOID serverPtr)
+{
+	return 0;
+}

@@ -141,6 +141,7 @@
     <ClInclude Include="Util\IncludeHeader.h" />
     <ClInclude Include="Util\ShutDown.h" />
     <ClInclude Include="Util\Singleton.h" />
+    <ClInclude Include="Util\Thread.h" />
     <ClInclude Include="Util\Type.h" />
   </ItemGroup>
   <ItemGroup>
@@ -154,6 +155,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="Util\ShutDown.cpp" />
+    <ClCompile Include="Util\Thread.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

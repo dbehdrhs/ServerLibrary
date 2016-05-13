@@ -13,5 +13,7 @@ public:
 	BOOL Listen();
 
 	SOCKET Accept();
+
+	static DWORD WINAPI AcceptThread(LPVOID serverPtr);
 };
 
