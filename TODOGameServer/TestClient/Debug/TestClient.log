@@ -1,1 +1,3 @@
-﻿  TestClient.vcxproj -> C:\Users\동곤\Documents\GitHub\ServerLibrary\TODOGameServer\Debug\TestClient.exe
+﻿  stdafx.cpp
+  TestClient.cpp
+  TestClient.vcxproj -> C:\Users\동곤\Documents\GitHub\ServerLibrary\TODOGameServer\Debug\TestClient.exe
