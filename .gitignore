@@ -28,3 +28,7 @@
 *.out
 *.app
 *.opendb
+
+# Folder
+Debug/
+Release/
