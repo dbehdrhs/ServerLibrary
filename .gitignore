@@ -4,6 +4,7 @@
 *.o
 *.obj
 
+
 # Precompiled Headers
 *.gch
 *.pch
@@ -27,6 +28,3 @@
 *.out
 *.app
 *.opendb
-
-/ipch
-/Debug
