@@ -1,7 +1,1 @@
-﻿  stdafx.cpp
-  ShutDown.cpp
-  ListenSocket.cpp
-  ClientSession.cpp
-  BaseSocket.cpp
-  Generating Code...
-  ServerLibrary.vcxproj -> C:\Users\동곤\Documents\GitHub\ServerLibrary\TODOGameServer\Debug\ServerLibrary.lib
+﻿  ServerLibrary.vcxproj -> C:\Users\동곤\Documents\GitHub\ServerLibrary\TODOGameServer\Debug\ServerLibrary.lib
