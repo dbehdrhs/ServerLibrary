@@ -33,7 +33,7 @@ BOOL ListenSocket::Bind(int af)
 	addr_.sin_addr.s_addr = htonl(INADDR_ANY);
 	addr_.sin_port = htons(9090);
 
-	int retVal = ::bind(sock_, (SOCKADDR*)&addr_, sizeof(addr_));
+	int retVal = bind(sock_, (SOCKADDR*)&addr_, sizeof(addr_));
 	if (retVal == SOCKET_ERROR)
 	{
 		cout << "[ERROR] Bind Failed" << endl;

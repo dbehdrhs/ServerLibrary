@@ -1,34 +1,37 @@
-=========
-OSI 7계층 
-=========
-Application : 응용프로세스에게 네트워크 접근 수단 제공
-Presentation : 전송 데이터의 구문과 의미에 대한 처리를 담당, 암호화, 
-Session : 세선의 설정 및 유지, 종료 : 
-Transport : 메시지의 종단 간 전달, 흐름제어, 오류제어 : tcp,udp (port사용, checksum)
-Network : 논리적 링크 설정, 패킷단편화, 라우팅 : IP(경로설정, 논리적 주소), ARP(물리적주소, MAC주소 알아내기), ICMP, IGMP
-DataLink : 비트 동기 및 식별 기능, 흐름제어, 오류제어 : 라우터, 게이트웨이
-Physical : 물리적 링크 설정, 유지, 해제를 담당, 전기적 신호로 전송(비트) : Ethernet, 
-=================================================================================
-TCP
-UDP
-IP
-=================================================================================
-Socket Option
+========================================================================
+    STATIC LIBRARY : ServerLibrary Project Overview
+========================================================================
 
-=================================================================================
-Windows I/O Model
-IOCP(Input Output Completion Port)
+AppWizard has created this ServerLibrary library project for you.
 
-=================================================================================
-Thread
+This file contains a summary of what you will find in each of the files that
+make up your ServerLibrary application.
 
-=================================================================================
-동기화
-critical_section
-mutex
-semaphore
-event
-=================================================================================
-게임 제작
 
-=================================================================================
+ServerLibrary.vcxproj
+    This is the main project file for VC++ projects generated using an Application Wizard.
+    It contains information about the version of Visual C++ that generated the file, and
+    information about the platforms, configurations, and project features selected with the
+    Application Wizard.
+
+ServerLibrary.vcxproj.filters
+    This is the filters file for VC++ projects generated using an Application Wizard. 
+    It contains information about the association between the files in your project 
+    and the filters. This association is used in the IDE to show grouping of files with
+    similar extensions under a specific node (for e.g. ".cpp" files are associated with the
+    "Source Files" filter).
+
+
+/////////////////////////////////////////////////////////////////////////////
+
+StdAfx.h, StdAfx.cpp
+    These files are used to build a precompiled header (PCH) file
+    named ServerLibrary.pch and a precompiled types file named StdAfx.obj.
+
+/////////////////////////////////////////////////////////////////////////////
+Other notes:
+
+AppWizard uses "TODO:" comments to indicate parts of the source code you
+should add to or customize.
+
+/////////////////////////////////////////////////////////////////////////////
