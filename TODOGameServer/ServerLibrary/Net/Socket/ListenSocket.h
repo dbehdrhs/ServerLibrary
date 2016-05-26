@@ -12,7 +12,7 @@ public:
 	BOOL Bind(int af);
 	BOOL Listen();
 
-	SOCKET Accept();
+	ClientSession* Accept();
 
 	static DWORD WINAPI AcceptThread(LPVOID serverPtr);
 };

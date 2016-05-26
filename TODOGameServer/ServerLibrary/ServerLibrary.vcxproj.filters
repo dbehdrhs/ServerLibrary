@@ -54,10 +54,13 @@
     <ClInclude Include="Net\Socket\ClientSession.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Util\Thread.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="Util\Singleton.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Util\Thread.h">
+    <ClInclude Include="Manager\Session\SessionManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -78,6 +81,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Util\Thread.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Manager\Session\SessionManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

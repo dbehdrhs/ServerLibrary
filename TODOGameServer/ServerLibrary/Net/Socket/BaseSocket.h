@@ -10,12 +10,15 @@ public:
 	BOOL CloseSocket();
 
 	string GetAddrToString();
-	SOCKET& GetSocket() { return sock_; }
-	SOCKADDR_IN& GetAddr() { return addr_; }
+	SOCKET& Socket() { return sock_; }
+	SOCKADDR_IN& Addr() { return addr_; }
+	int ID() { return id_; }
 
 	virtual void OnRecv() = 0;
 
 protected:
 	SOCKET sock_;
 	SOCKADDR_IN addr_;
+
+	int id_;
 };

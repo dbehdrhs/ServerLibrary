@@ -15,6 +15,7 @@
 //#include <hash_map>
 #include <array>
 #include <list>
+#include <vector>
 
 #include <chrono>
 
@@ -24,10 +25,12 @@
 using namespace std;
 
 
+#include "ShutDown.h"
 // Util
 // TODO[2] : Setting(SERVER:ip, port, MAX_CONNECT_COUNT)
 
 #include "./Util/Type.h"
+#include "./Util/Singleton.h"
 // TODO[0] : xml parsing 
 // TODO[0] : Log : file, dump, print
 // TODO[0] : ADO or ODBC
@@ -41,12 +44,12 @@ using namespace std;
 
 // Network
 #include "./Net/wsa.h"
+#include "./Net/Socket/ClientSession.h"
 // TODO[2] : Packet
 
 // TODO[2] : BaseServer
 // TODO[2] : Lobby
 // TODO[2] : Game
-
 
 
 

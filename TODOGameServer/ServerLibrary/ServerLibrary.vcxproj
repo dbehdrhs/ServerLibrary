@@ -132,6 +132,7 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Manager\Session\SessionManager.h" />
     <ClInclude Include="Net\Socket\BaseSocket.h" />
     <ClInclude Include="Net\Socket\ClientSession.h" />
     <ClInclude Include="Net\Socket\ListenSocket.h" />
@@ -145,6 +146,7 @@
     <ClInclude Include="Util\Type.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Manager\Session\SessionManager.cpp" />
     <ClCompile Include="Net\Socket\BaseSocket.cpp" />
     <ClCompile Include="Net\Socket\ClientSession.cpp" />
     <ClCompile Include="Net\Socket\ListenSocket.cpp" />

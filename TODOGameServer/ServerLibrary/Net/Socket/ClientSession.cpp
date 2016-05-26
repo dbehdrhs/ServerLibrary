@@ -10,3 +10,7 @@ ClientSession::ClientSession()
 ClientSession::~ClientSession()
 {
 }
+
+void ClientSession::OnRecv()
+{
+}

@@ -23,6 +23,7 @@ public:
 	~WSA()
 	{
 		WSACleanup();
+		cout << "[INFO] WSACleanup OK" << endl;
 	}
 private:
 	WSADATA wsa_;

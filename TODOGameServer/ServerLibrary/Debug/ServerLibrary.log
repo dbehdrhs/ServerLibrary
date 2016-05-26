@@ -1,7 +1,3 @@
-﻿  stdafx.cpp
-  ShutDown.cpp
-  ListenSocket.cpp
-  ClientSession.cpp
-  BaseSocket.cpp
-  Generating Code...
-  ServerLibrary.vcxproj -> C:\Users\동곤\Documents\GitHub\ServerLibrary\TODOGameServer\Debug\ServerLibrary.lib
+﻿cl : 명령줄 warning D9028: 최소 다시 빌드에 실패했습니다. 정상 빌드로 되돌립니다.
+  SessionManager.cpp
+  ServerLibrary.vcxproj -> D:\Github\ServerLibrary\TODOGameServer\Debug\ServerLibrary.lib
