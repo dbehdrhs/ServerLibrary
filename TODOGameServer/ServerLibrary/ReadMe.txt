@@ -1,37 +1,79 @@
-========================================================================
-    STATIC LIBRARY : ServerLibrary Project Overview
-========================================================================
+=========
+OSI 7계층 
+=========
+A:Application, O:OS, H:HW
+----------------------
+A
+-----------------------------------------------------------------
+Application : 응용프로세스에게 네트워크 접근 수단 제공
+	이동 패킷 만듬 | 패킷 해석
 
-AppWizard has created this ServerLibrary library project for you.
+Presentation : 전송 데이터의 구문과 의미에 대한 처리를 담당, 암호화, 
+	암호화도 해주고 | 암호화 풀어주고
 
-This file contains a summary of what you will find in each of the files that
-make up your ServerLibrary application.
+Session : 세션의 설정 및 유지, 종료 : 
+	어떤 플레이어한테 보낼지 확인해주고 | 누가 보냈는지 확인해보고
+	SessionManager(push:접속, pop:종료, find:찾기)
+-----------------------------------------------------------------
+A, O
+-----------------------------------------------------------------
+Transport : 메시지의 종단 간 전달, 흐름제어, 오류제어 : tcp,udp (port사용, checksum)
+	이거 보낼꺼다 | port에 맞는 애플리케이션으로 왔다
 
+Network : 논리적 링크 설정, 패킷단편화, 라우팅 : IP(경로설정, 논리적 주소), ARP(물리적주소, MAC주소 알아내기), ICMP, IGMP
+	보낸다, 길찾기 | 컴퓨터(NIC)로 왔다
+-----------------------------------------------------------------
+O, H
+-----------------------------------------------------------------
+DataLink : 비트 동기 및 식별 기능, 흐름제어, 오류제어 : 라우터, 게이트웨이
+	커져라!! | 커져라!!
 
-ServerLibrary.vcxproj
-    This is the main project file for VC++ projects generated using an Application Wizard.
-    It contains information about the version of Visual C++ that generated the file, and
-    information about the platforms, configurations, and project features selected with the
-    Application Wizard.
+Physical : 물리적 링크 설정, 유지, 해제를 담당, 전기적 신호로 전송(비트) : Ethernet, 
+	간다 | 온다
+=================================================================================
+Protocol
+- TCP
+- UDP
+- IP
+=================================================================================
+Socket Option
 
-ServerLibrary.vcxproj.filters
-    This is the filters file for VC++ projects generated using an Application Wizard. 
-    It contains information about the association between the files in your project 
-    and the filters. This association is used in the IDE to show grouping of files with
-    similar extensions under a specific node (for e.g. ".cpp" files are associated with the
-    "Source Files" filter).
+=================================================================================
+Windows I/O Model
+- IOCP(Input Output Completion Port)
 
+=================================================================================
+Thread
 
-/////////////////////////////////////////////////////////////////////////////
+=================================================================================
+동기화(Lock)
+- critical_section
+- mutex
+- semaphore
+- event
+=================================================================================
+게임 제작
 
-StdAfx.h, StdAfx.cpp
-    These files are used to build a precompiled header (PCH) file
-    named ServerLibrary.pch and a precompiled types file named StdAfx.obj.
+- Server Logic
+Session
+Web
+DB
 
-/////////////////////////////////////////////////////////////////////////////
-Other notes:
+- Game Logic
+GameLogic
 
-AppWizard uses "TODO:" comments to indicate parts of the source code you
-should add to or customize.
+- Common
+Monitoring
+Packet
+Setting
 
-/////////////////////////////////////////////////////////////////////////////
+- Client
+DummyClient
+
+=================================================================================
+C++11/14/17
+
+=================================================================================
+OS
+- Windows
+- Linux
