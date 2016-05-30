@@ -32,3 +32,7 @@
 # Folder
 Debug/
 Release/
+ServerLibrary/Debug/
+TestClient/Debug/
+TODOGameServer/.vs/TODOGameServer/v14/.suo
+*.ipch
