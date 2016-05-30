@@ -11,6 +11,11 @@ BaseSocket::~BaseSocket()
 	CloseSocket();
 }
 
+BaseSocket::BaseSocket(int id)
+{
+	id_ = id;
+}
+
 BOOL BaseSocket::CreateSocket(int af, int type, int protocol)
 {
 	sock_ = socket(af, type, protocol);

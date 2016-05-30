@@ -4,11 +4,12 @@
 
 SessionManager::SessionManager()
 {
+	Init();
 }
-
 
 SessionManager::~SessionManager()
 {
+	Release();
 }
 
 void SessionManager::Init()
@@ -19,8 +20,8 @@ void SessionManager::Init()
 	}
 
 	maxCount_ = SESSION_CAPACITY;
-	sessionCount_ = 0;
 	sessionId_ = 1;
+	sessionCount_ = 0;
 }
 
 void SessionManager::Release()
@@ -28,32 +29,68 @@ void SessionManager::Release()
 	for (auto data : sessionList_)
 	{
 		data->CloseSocket();
-		delete data;
+		SAFE_DELETE(data);
 	}
 
 	sessionList_.clear();
 }
 
-bool SessionManager::AddSession()
+bool SessionManager::AddSession(BaseSocket* session)
 {
-	return false;
+	auto iter = std::find(sessionList_.begin(), sessionList_.end(), session);
+
+	if (iter != sessionList_.end())
+	{
+		cout << "[INFO] Find same session" << endl;
+		return false;
+	}
+		
+	if (sessionCount_ >= SESSION_CAPACITY)
+	{
+		cout << "[INFO] Full SessionList " << endl;
+		return false;
+	}
+	
+	session->SetId(CreateSessionId());
+	sessionList_.push_back(session);
+
+	return true;
 }
 
 bool SessionManager::CloseSession(BaseSocket * session)
 {
+	auto iter = std::find(sessionList_.begin(), sessionList_.end(), session);
+
+	if (iter != sessionList_.end())
+	{
+		sessionList_.remove((*iter));
+
+		(*iter)->CloseSocket();
+		SAFE_DELETE(*iter);
+		sessionCount_--;
+
+		return true;
+	}
+	
 	return false;
 }
 
-BaseSocket * SessionManager::Session(int id)
+BaseSocket * SessionManager::Session(int sessionId)
 {
 	for (auto session : sessionList_)
 	{
-		if (session->ID() == id)
+		if (session->ID() == sessionId)
 		{
 			return session;
 		}
 	}
 
-	cout << "[INFO] Not Found Session " << id << endl;
+	cout << "[INFO] Not Found SessionID " << sessionId << endl;
 	return nullptr;
+}
+
+int SessionManager::CreateSessionId()
+{
+	sessionCount_++;
+	return sessionId_++;
 }

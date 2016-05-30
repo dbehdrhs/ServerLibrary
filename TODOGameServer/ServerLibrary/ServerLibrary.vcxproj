@@ -133,23 +133,31 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Manager\Session\SessionManager.h" />
+    <ClInclude Include="Net\Server\BaseServer.h" />
     <ClInclude Include="Net\Socket\BaseSocket.h" />
     <ClInclude Include="Net\Socket\ClientSession.h" />
+    <ClInclude Include="Net\Socket\IocpSession.h" />
     <ClInclude Include="Net\Socket\ListenSocket.h" />
     <ClInclude Include="Net\Socket\RawSocket.h" />
     <ClInclude Include="Net\wsa.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
+    <ClInclude Include="Util\config.h" />
     <ClInclude Include="Util\IncludeHeader.h" />
+    <ClInclude Include="Util\LockManager.h" />
     <ClInclude Include="Util\ShutDown.h" />
     <ClInclude Include="Util\Singleton.h" />
     <ClInclude Include="Util\Thread.h" />
+    <ClInclude Include="Util\tinyxml\tinystr.h" />
+    <ClInclude Include="Util\tinyxml\tinyxml.h" />
     <ClInclude Include="Util\Type.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Manager\Session\SessionManager.cpp" />
+    <ClCompile Include="Net\Server\BaseServer.cpp" />
     <ClCompile Include="Net\Socket\BaseSocket.cpp" />
     <ClCompile Include="Net\Socket\ClientSession.cpp" />
+    <ClCompile Include="Net\Socket\IocpSession.cpp" />
     <ClCompile Include="Net\Socket\ListenSocket.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
@@ -157,8 +165,14 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="Util\config.cpp" />
+    <ClCompile Include="Util\LockManager.cpp" />
     <ClCompile Include="Util\ShutDown.cpp" />
     <ClCompile Include="Util\Thread.cpp" />
+    <ClCompile Include="Util\tinyxml\tinystr.cpp" />
+    <ClCompile Include="Util\tinyxml\tinyxml.cpp" />
+    <ClCompile Include="Util\tinyxml\tinyxmlerror.cpp" />
+    <ClCompile Include="Util\tinyxml\tinyxmlparser.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

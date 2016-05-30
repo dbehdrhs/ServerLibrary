@@ -6,7 +6,6 @@ ListenSocket::ListenSocket()
 {
 }
 
-
 ListenSocket::~ListenSocket()
 {
 }
@@ -63,6 +62,8 @@ ClientSession* ListenSocket::Accept()
 	SOCKET sock = session->Socket();
 	
 	sock = accept(sock_, (SOCKADDR*)&session->Addr(), &addrLen);
+	
+	SessionManager::Instance().AddSession(session);
 
 	return session;
 }

@@ -12,17 +12,19 @@ public:
 	void Init();
 	void Release();
 
-	bool AddSession();
+	bool AddSession(BaseSocket* session);
 	bool CloseSession(BaseSocket* session);
 
 	BaseSocket* Session(int id);
+	int Count() { return sessionCount_; }
 
 private:
-	vector<BaseSocket*> sessionList_;
+	int CreateSessionId();
 
-	int sessionCount_;
+private:
+	list<BaseSocket*> sessionList_;
 	int maxCount_;
-
+	int sessionCount_;
 	int sessionId_;
 };
 

@@ -11,6 +11,11 @@ ClientSession::~ClientSession()
 {
 }
 
+ClientSession::ClientSession(int id)
+{
+	id_ = id;
+}
+
 void ClientSession::OnRecv()
 {
 }

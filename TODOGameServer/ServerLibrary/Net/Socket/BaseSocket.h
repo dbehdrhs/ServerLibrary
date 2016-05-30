@@ -6,6 +6,8 @@ public:
 	BaseSocket();
 	virtual ~BaseSocket();
 
+	BaseSocket(int id);
+
 	BOOL CreateSocket(int af = AF_INET, int type = SOCK_STREAM, int protocol = 0);
 	BOOL CloseSocket();
 
@@ -13,6 +15,8 @@ public:
 	SOCKET& Socket() { return sock_; }
 	SOCKADDR_IN& Addr() { return addr_; }
 	int ID() { return id_; }
+
+	void SetId(int id) { id_ = id; }
 
 	virtual void OnRecv() = 0;
 
