@@ -36,3 +36,4 @@ ServerLibrary/Debug/
 TestClient/Debug/
 TODOGameServer/.vs/TODOGameServer/v14/.suo
 *.ipch
+/TODOGameServer/TODOGameServer.VC.db
