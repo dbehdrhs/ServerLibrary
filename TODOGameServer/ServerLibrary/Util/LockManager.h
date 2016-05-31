@@ -5,4 +5,3 @@ public:
 	LockManager();
 	~LockManager();
 };
-

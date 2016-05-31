@@ -33,7 +33,7 @@ DWORD IocpSession::AccepThread(LPVOID p)
 
 bool IocpSession::CreateListenSock()
 {
-	sock_ = WSASocket(AF_INET, SOCK_STREAM, 0, NULL, NULL, WSA_FLAG_OVERLAPPED);
+	/*sock_ = WSASocket(AF_INET, SOCK_STREAM, 0, NULL, NULL, WSA_FLAG_OVERLAPPED);
 	if (sock_ == INVALID_SOCKET)
 	{
 		cout << "[ERROR] Failed create ListenSocket";
@@ -60,7 +60,7 @@ bool IocpSession::CreateListenSock()
 	{
 		cout << "[ERROR] Failed listen ListenSocket";
 		return false;
-	}
+	}*/
 
 	return true;
 }

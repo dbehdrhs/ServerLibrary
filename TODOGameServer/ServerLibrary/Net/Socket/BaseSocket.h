@@ -9,7 +9,6 @@ public:
 	BaseSocket(int id);
 
 	BOOL CreateSocket(int af = AF_INET, int type = SOCK_STREAM, int protocol = 0);
-	BOOL CloseSocket();
 
 	string GetAddrToString();
 	SOCKET& Socket() { return sock_; }
@@ -17,8 +16,15 @@ public:
 	int ID() { return id_; }
 
 	void SetId(int id) { id_ = id; }
+	void SetSocketOption();
 
+	virtual void OnSend() = 0;
 	virtual void OnRecv() = 0;
+
+	virtual void OnAccept(SOCKET sock, SOCKADDR_IN addr);
+	virtual void OnClose();
+	
+	BOOL CloseSocket();
 
 protected:
 	SOCKET sock_;

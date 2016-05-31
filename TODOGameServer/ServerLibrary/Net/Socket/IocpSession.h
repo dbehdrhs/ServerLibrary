@@ -1,6 +1,19 @@
 #pragma once
 #include "BaseSocket.h"
 
+enum IOTYPE
+{
+	IO_READ,
+	IO_WRITE,
+	IO_END
+};
+
+struct overlappedEx : OVERLAPPED
+{
+	char buffer_[SIZE_IO_MAX];
+	IOTYPE type_;
+};
+
 class IocpSession :	public BaseSocket
 {
 public:
@@ -20,8 +33,5 @@ private:
 
 private:
 	HANDLE iocp_;
-
-	char ip_[16];
-	int port_;
 };
 

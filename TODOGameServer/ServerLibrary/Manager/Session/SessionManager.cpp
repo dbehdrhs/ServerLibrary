@@ -26,10 +26,10 @@ void SessionManager::Init()
 
 void SessionManager::Release()
 {
-	for (auto data : sessionList_)
+	for (auto session : sessionList_)
 	{
-		data->CloseSocket();
-		SAFE_DELETE(data);
+		session->CloseSocket();
+		SAFE_DELETE(session);
 	}
 
 	sessionList_.clear();

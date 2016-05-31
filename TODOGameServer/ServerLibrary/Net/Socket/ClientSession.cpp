@@ -19,3 +19,7 @@ ClientSession::ClientSession(int id)
 void ClientSession::OnRecv()
 {
 }
+
+void ClientSession::OnSend()
+{
+}
