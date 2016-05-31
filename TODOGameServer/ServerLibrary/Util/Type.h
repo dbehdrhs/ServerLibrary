@@ -1,6 +1,8 @@
 #pragma once
 
 #define SIZE_64 64
+#define SIZE_IO_MAX 1024
+
 
 typedef TiXmlDocument	xml_t;
 typedef TiXmlElement	xmlNode_t;

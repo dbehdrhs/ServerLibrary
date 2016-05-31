@@ -32,6 +32,7 @@ BOOL BaseSocket::CloseSocket()
 {
 	if (sock_ != INVALID_SOCKET)
 	{
+		// TODO : Check read and write stream. shutdown();
 		closesocket(sock_);
 		return TRUE;
 	}
@@ -46,4 +47,20 @@ string BaseSocket::GetAddrToString()
 	inet_ntop(addr_.sin_family, &addr_, ip.data(), ip.size());
 
 	return ip.data();
+}
+
+void BaseSocket::OnAccept(SOCKET sock, SOCKADDR_IN addr)
+{
+
+	sock_ = sock;
+	addr_ = addr;
+}
+
+void BaseSocket::OnClose()
+{
+	CloseSocket();
+}
+
+void BaseSocket::SetSocketOption()
+{
 }

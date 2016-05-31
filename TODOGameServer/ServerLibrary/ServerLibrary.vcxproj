@@ -134,6 +134,7 @@
   <ItemGroup>
     <ClInclude Include="Manager\Session\SessionManager.h" />
     <ClInclude Include="Net\Server\BaseServer.h" />
+    <ClInclude Include="Net\Server\IocpServer.h" />
     <ClInclude Include="Net\Socket\BaseSocket.h" />
     <ClInclude Include="Net\Socket\ClientSession.h" />
     <ClInclude Include="Net\Socket\IocpSession.h" />
@@ -155,6 +156,7 @@
   <ItemGroup>
     <ClCompile Include="Manager\Session\SessionManager.cpp" />
     <ClCompile Include="Net\Server\BaseServer.cpp" />
+    <ClCompile Include="Net\Server\IocpServer.cpp" />
     <ClCompile Include="Net\Socket\BaseSocket.cpp" />
     <ClCompile Include="Net\Socket\ClientSession.cpp" />
     <ClCompile Include="Net\Socket\IocpSession.cpp" />
