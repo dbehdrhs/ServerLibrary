@@ -1,37 +1,53 @@
 #pragma once
 #include "BaseSocket.h"
 
-enum IOTYPE
+enum IO_TYPE
 {
-	IO_READ,
-	IO_WRITE,
+	IO_SEND,
+	IO_RECV,
 	IO_END
 };
 
-struct overlappedEx : OVERLAPPED
+class IoData
 {
-	char buffer_[SIZE_IO_MAX];
-	IOTYPE type_;
+private:
+	OVERLAPPED overlapped_;
+	WSABUF wBuf_;
+
+	array<char, SIZE_IO_MAX> buffer_;
+	IO_TYPE type_;
+
+public:
+	IoData()
+	{
+		ZeroMemory(&overlapped_, sizeof(overlapped_));
+		this->Clear();
+	}
+
+	void Clear()
+	{
+		buffer_.fill(0);
+	}
+
+	IO_TYPE& type() { return type_; }
+	char* data() { return buffer_.data(); }
 };
 
 class IocpSession :	public BaseSocket
 {
 public:
 	IocpSession();
+	IocpSession(SOCKET sock, SOCKADDR_IN addr);
 	virtual ~IocpSession();
-
-	// Inherited via BaseSocket
-	virtual void OnRecv() override;
 
 	void Init();
 	void Release();
 
-	DWORD WINAPI AccepThread(LPVOID p);
+	// Inherited via BaseSocket
+	virtual void OnRecv() override;
+	virtual void OnSend() override;
 
 private:
-	bool CreateListenSock();
-
-private:
-	HANDLE iocp_;
+	IoData ioData_[IO_END];
 };
 

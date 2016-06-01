@@ -59,6 +59,7 @@ bool SessionManager::AddSession(BaseSocket* session)
 
 bool SessionManager::CloseSession(BaseSocket * session)
 {
+	// TODO : Lock
 	auto iter = std::find(sessionList_.begin(), sessionList_.end(), session);
 
 	if (iter != sessionList_.end())

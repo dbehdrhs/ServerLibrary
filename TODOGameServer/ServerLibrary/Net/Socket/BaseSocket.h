@@ -24,7 +24,9 @@ public:
 	virtual void OnAccept(SOCKET sock, SOCKADDR_IN addr);
 	virtual void OnClose();
 	
-	BOOL CloseSocket();
+	bool CloseSocket();
+
+	bool IsRoomJoin() { /*return (room : true ? false);*/ }
 
 protected:
 	SOCKET sock_;

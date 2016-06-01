@@ -47,6 +47,7 @@ using namespace std;
 
 // Network
 #include "./Net/wsa.h"
+#include "./Net/Socket/IocpSession.h"
 #include "./Net/Socket/ClientSession.h"
 #include "./Manager/Session/SessionManager.h"
 // TODO[2] : Packet

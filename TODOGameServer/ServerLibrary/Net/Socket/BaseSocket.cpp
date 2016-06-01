@@ -28,7 +28,7 @@ BOOL BaseSocket::CreateSocket(int af, int type, int protocol)
 	return TRUE;
 }
 
-BOOL BaseSocket::CloseSocket()
+bool BaseSocket::CloseSocket()
 {
 	if (sock_ != INVALID_SOCKET)
 	{
@@ -51,7 +51,6 @@ string BaseSocket::GetAddrToString()
 
 void BaseSocket::OnAccept(SOCKET sock, SOCKADDR_IN addr)
 {
-
 	sock_ = sock;
 	addr_ = addr;
 }

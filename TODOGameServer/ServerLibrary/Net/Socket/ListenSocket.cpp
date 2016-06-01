@@ -70,7 +70,7 @@ ClientSession* ListenSocket::Accept()
 
 DWORD ListenSocket::AcceptThread(LPVOID serverPtr)
 {
-	while (!_shutDown)
+	while (!g_shutDown)
 	{
 
 	}

@@ -16,13 +16,20 @@ public:
 	virtual bool OnRecv() override;
 	//bool OnSend();
 
-	bool OnAccept();
+	bool OnAccept(SOCKET clientSock, SOCKADDR_IN clientAddr);
 	// AcceptThread
 	// WorkerThread
 
+	HANDLE Iocp() { return iocp_; }
+
+	static DWORD WINAPI AcceptThread(PVOID pParam);
+	static DWORD WINAPI WorkerThread(PVOID pParam);
+
+private:
+	bool AssociateSession(IocpSession* session);
+
 private:
 	HANDLE iocp_;
-
-	SOCKET listenSocket_;
 };
+
 

@@ -20,10 +20,12 @@ public:
 	virtual bool OnRecv() = 0;
 
 	SERVER_STATUS& status() { return status_; }
+	SOCKET& ListenSocket() { return listenSocket_; }
 
 protected:
 	SERVER_STATUS status_;
 
+	SOCKET listenSocket_;
 	int port_;
 	char ip_[16];
 

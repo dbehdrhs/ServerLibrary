@@ -1,4 +1,4 @@
 #pragma once
 
-extern bool _shutDown;
+extern bool g_shutDown;
 extern void ShutDownServer();
