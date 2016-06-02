@@ -1,12 +1,14 @@
 #pragma once
 
-#define SIZE_64 64
-#define SIZE_IO_MAX 1024
-
+#define SIZE_64				64
+#define SIZE_IO_MAX			1024
+#define SOCKET_BUF_SIZE		1024 * 10
 
 typedef TiXmlDocument	xml_t;
 typedef TiXmlElement	xmlNode_t;
 typedef TiXmlHandle		xmlHandle_t;
+
+typedef std::thread		thread_t;
 
 #define SAFE_DELETE(data)	\
 {							\

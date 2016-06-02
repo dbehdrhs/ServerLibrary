@@ -9,6 +9,7 @@ IocpServer::IocpServer()
 
 IocpServer::~IocpServer()
 {
+	Release();
 }
 
 void IocpServer::Init()
@@ -18,6 +19,7 @@ void IocpServer::Init()
 
 void IocpServer::Release()
 {
+	CloseHandle(iocp_);
 }
 
 bool IocpServer::CreateListenSocket()
@@ -146,7 +148,6 @@ bool IocpServer::AssociateSession(IocpSession* session)
 		cout << "[ERROR] Socket associate failed" << endl;
 		return false;
 	}
-		
 
 	return true;
 }

@@ -28,7 +28,6 @@ void SessionManager::Release()
 {
 	for (auto session : sessionList_)
 	{
-		session->CloseSocket();
 		SAFE_DELETE(session);
 	}
 
