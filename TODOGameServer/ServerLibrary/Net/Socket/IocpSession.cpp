@@ -31,6 +31,22 @@ void IocpSession::OnSend()
 {
 }
 
+void IocpSession::ReadyRecv()
+{
+	DWORD flags = 0;
+	DWORD recvBytes;
+	DWORD errorCode = WSARecv(sock_, &(ioData_[IO_RECV].wsaBuf()), 1, &recvBytes, &flags, &(ioData_[IO_RECV].overlapped()), NULL);
+
+	if (errorCode == SOCKET_ERROR &&
+		WSAGetLastError() != ERROR_IO_PENDING)
+	{
+		// ERROR
+
+		SessionManager::Instance().CloseSession(this);
+		
+	}
+}
+
 void IocpSession::OnRecv()
 {
 }

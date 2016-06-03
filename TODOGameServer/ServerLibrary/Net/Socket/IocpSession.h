@@ -22,6 +22,8 @@ public:
 	{
 		ZeroMemory(&overlapped_, sizeof(overlapped_));
 		this->Clear();
+
+		wBuf_.buf = buffer_.data();
 	}
 
 	void Clear()
@@ -31,6 +33,8 @@ public:
 
 	IO_TYPE& type() { return type_; }
 	char* data() { return buffer_.data(); }
+	WSABUF& wsaBuf() { return wBuf_; }
+	OVERLAPPED& overlapped() { return overlapped_; }
 };
 
 class IocpSession :	public BaseSocket
@@ -46,6 +50,8 @@ public:
 	// Inherited via BaseSocket
 	virtual void OnRecv() override;
 	virtual void OnSend() override;
+
+	void ReadyRecv();
 
 private:
 	IoData ioData_[IO_END];
