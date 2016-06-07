@@ -21,14 +21,15 @@ public:
 	IoData()
 	{
 		ZeroMemory(&overlapped_, sizeof(overlapped_));
-		this->Clear();
-
-		wBuf_.buf = buffer_.data();
+		this->Init();
 	}
 
-	void Clear()
+	void Init()
 	{
 		buffer_.fill(0);
+
+		wBuf_.buf = buffer_.data();
+		wBuf_.len = SIZE_IO_MAX;
 	}
 
 	IO_TYPE& type() { return type_; }
