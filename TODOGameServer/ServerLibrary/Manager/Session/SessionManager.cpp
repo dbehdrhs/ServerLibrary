@@ -3,7 +3,9 @@
 
 
 SessionManager::SessionManager()
+ :lock_("SessionManager")
 {
+	
 	Init();
 }
 
@@ -43,6 +45,7 @@ void SessionManager::Release()
 
 bool SessionManager::AddSession(BaseSocket* session)
 {
+	SAFE_LOCK(lock_);
 	auto iter = std::find(sessionList_.begin(), sessionList_.end(), session);
 
 	if (iter != sessionList_.end())
