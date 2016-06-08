@@ -24,7 +24,7 @@ void IocpServer::Release()
 
 bool IocpServer::CreateListenSocket()
 {
-	listenSocket_ = socket(AF_INET, SOCK_STREAM, 0);
+	listenSocket_ = WSASocket(AF_INET, SOCK_STREAM, NULL, NULL, 0, WSA_FLAG_OVERLAPPED);
 
 	SOCKADDR_IN serverAddr;
 	serverAddr.sin_family = AF_INET;
@@ -74,6 +74,8 @@ bool IocpServer::OnAccept(SOCKET clientSock, SOCKADDR_IN clientAddr)
 		return false;
 	}
 
+	session->ReadyRecv();
+
 	return true;
 }
 
@@ -85,6 +87,7 @@ DWORD IocpServer::AcceptThread(PVOID pParam)
 	{
 		SOCKADDR_IN clientAddr;
 		int addrLen = sizeof(clientAddr);
+
 		SOCKET clientSock = WSAAccept(server->ListenSocket(), (SOCKADDR*)&clientAddr, &addrLen, NULL, NULL);
 
 		if (clientSock == SOCKET_ERROR)
@@ -114,7 +117,7 @@ DWORD IocpServer::WorkerThread(PVOID serverPtr)
 		if (!session)
 		{
 			cout << "[ERROR] Invalid Session" << endl;
-			continue;
+			return 0;
 		}
 
 		if (transferSize == 0)
@@ -127,13 +130,13 @@ DWORD IocpServer::WorkerThread(PVOID serverPtr)
 		{
 		case IO_SEND:
 			session->OnSend();
-			break;
+			continue;
 		case IO_RECV:
 			session->OnRecv();
-			break;
+			continue;
 		default:
 			SessionManager::Instance().CloseSession(session);
-			break;
+			continue;
 		}
 	}
 

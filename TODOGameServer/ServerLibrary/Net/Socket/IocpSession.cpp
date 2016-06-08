@@ -15,16 +15,18 @@ IocpSession::IocpSession(SOCKET sock, SOCKADDR_IN addr)
 
 IocpSession::~IocpSession()
 {
+	Release();
 }
 
 void IocpSession::Init()
 {
-	ioData_[IO_SEND].Clear();
-	ioData_[IO_RECV].Clear();
+	ioData_[IO_SEND].Init();
+	ioData_[IO_RECV].Init();
 }
 
 void IocpSession::Release()
 {
+	SessionManager::Instance().CloseSession(this);
 }
 
 void IocpSession::OnSend()
@@ -35,18 +37,19 @@ void IocpSession::ReadyRecv()
 {
 	DWORD flags = 0;
 	DWORD recvBytes;
-	DWORD errorCode = WSARecv(sock_, &(ioData_[IO_RECV].wsaBuf()), 1, &recvBytes, &flags, &(ioData_[IO_RECV].overlapped()), NULL);
 
-	if (errorCode == SOCKET_ERROR &&
-		WSAGetLastError() != ERROR_IO_PENDING)
+	ioData_[IO_RECV].Init();
+
+	DWORD errCode = WSARecv(sock_, &ioData_[IO_RECV].wsaBuf(), 1, &recvBytes, &flags, &ioData_[IO_RECV].overlapped(), NULL);
+
+	if (errCode == SOCKET_ERROR && (WSAGetLastError() != ERROR_IO_PENDING))
 	{
 		// ERROR
-
-		SessionManager::Instance().CloseSession(this);
-		
+		cout << "socket error : " << WSAGetLastError() << endl;
 	}
 }
 
 void IocpSession::OnRecv()
 {
+	this->ReadyRecv();
 }

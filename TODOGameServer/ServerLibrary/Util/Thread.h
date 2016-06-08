@@ -7,7 +7,7 @@ class Thread
 private:
 	size_t id_;
 	thread_t* thread_;
-	//Lock* lock_;
+	Lock* lock_;
 	string name_;
 
 public:
@@ -19,6 +19,9 @@ public:
 
 	size_t Id() { return id_; }
 	string Name() { return name_; }
+
+	void SetLock(Lock* lock) { lock_ = lock; }
+	Lock* lock() { return lock_; }
 };
 
 class ThreadManager : public Singleton<ThreadManager>

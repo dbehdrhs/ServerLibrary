@@ -3,9 +3,24 @@
 
 #include "stdafx.h"
 
+void Process()
+{
+	SessionManager::Instance();
+	IocpServer* server = new IocpServer();
+
+	while (!g_shutDown)
+	{
+		int a; 
+		cin >> a;
+		g_shutDown = true;
+	}
+}
+
 
 int main()
 {
+	Process();
+
 	xml_t xml;
 	LoadConfig(&xml);
 	xmlNode_t* root = xml.FirstChildElement("App")->FirstChildElement("Contents");
