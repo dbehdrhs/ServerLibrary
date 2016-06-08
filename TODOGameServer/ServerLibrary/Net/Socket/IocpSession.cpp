@@ -51,6 +51,5 @@ void IocpSession::ReadyRecv()
 
 void IocpSession::OnRecv()
 {
-
 	this->ReadyRecv();
 }

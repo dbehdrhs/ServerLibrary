@@ -18,6 +18,7 @@ Thread::~Thread()
 void Thread::Init()
 {
 	ThreadManager::Instance().Insert(this);
+	
 }
 
 void Thread::Release()
@@ -25,6 +26,7 @@ void Thread::Release()
 	thread_->join();
 
 	SAFE_DELETE(thread_);
+	SAFE_DELETE(lock_);
 }
 
 //----------------------------------------------------

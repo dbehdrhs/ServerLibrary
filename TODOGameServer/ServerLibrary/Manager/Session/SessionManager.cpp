@@ -22,13 +22,20 @@ void SessionManager::Init()
 	maxCount_ = SESSION_CAPACITY;
 	sessionId_ = 1;
 	sessionCount_ = 0;
+
+	//
+	for (int i = 0; i < SESSION_CAPACITY; i++)
+	{
+		IocpSession* session = new IocpSession;
+		AddSession(session);
+	}
 }
 
 void SessionManager::Release()
 {
-	for (auto session : sessionList_)
+	for(auto iter : sessionList_)
 	{
-		SAFE_DELETE(session);
+		iter->OnClose();
 	}
 
 	sessionList_.clear();
@@ -58,17 +65,19 @@ bool SessionManager::AddSession(BaseSocket* session)
 
 bool SessionManager::CloseSession(BaseSocket * session)
 {
+	if (!session)
+		return false;
+
 	// TODO : Lock
 	auto iter = std::find(sessionList_.begin(), sessionList_.end(), session);
 
 	if (iter != sessionList_.end())
 	{
-		sessionList_.remove((*iter));
-
-		(*iter)->CloseSocket();
-		SAFE_DELETE(*iter);
+		BaseSocket* closeSession = *iter;
+		sessionList_.remove(closeSession);
 		sessionCount_--;
 
+		SAFE_DELETE(closeSession);
 		return true;
 	}
 	
