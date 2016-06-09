@@ -5,7 +5,6 @@
 SessionManager::SessionManager()
  :lock_("SessionManager")
 {
-	
 	Init();
 }
 
@@ -25,7 +24,7 @@ void SessionManager::Init()
 	sessionId_ = 1;
 	sessionCount_ = 0;
 
-	//
+	////
 	for (int i = 0; i < SESSION_CAPACITY; i++)
 	{
 		IocpSession* session = new IocpSession;
@@ -35,9 +34,11 @@ void SessionManager::Init()
 
 void SessionManager::Release()
 {
-	for(auto iter : sessionList_)
+	auto iter = sessionList_.begin();
+	for (;iter != sessionList_.end();)
 	{
-		iter->OnClose();
+		CloseSession(*iter);
+		iter = sessionList_.begin();
 	}
 
 	sessionList_.clear();
@@ -46,6 +47,7 @@ void SessionManager::Release()
 bool SessionManager::AddSession(BaseSocket* session)
 {
 	SAFE_LOCK(lock_);
+
 	auto iter = std::find(sessionList_.begin(), sessionList_.end(), session);
 
 	if (iter != sessionList_.end())
@@ -68,7 +70,9 @@ bool SessionManager::AddSession(BaseSocket* session)
 
 bool SessionManager::CloseSession(BaseSocket * session)
 {
-	if (!session)
+	SAFE_LOCK(lock_);
+
+	if (session == nullptr)
 		return false;
 
 	// TODO : Lock
@@ -89,6 +93,8 @@ bool SessionManager::CloseSession(BaseSocket * session)
 
 BaseSocket * SessionManager::Session(int sessionId)
 {
+	SAFE_LOCK(lock_);
+
 	for (auto session : sessionList_)
 	{
 		if (session->ID() == sessionId)

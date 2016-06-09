@@ -36,3 +36,5 @@ Release/
 /TODOGameServer/TODOGameServer.VC.db
 /TODOGameServer/ipch/TESTCLIENT-d327ff78
 /TODOGameServer/.vs/TODOGameServer/v14
+/TODOGameServer/ipch/SERVERLIBRARY-7b2e54e6
+*.ipch

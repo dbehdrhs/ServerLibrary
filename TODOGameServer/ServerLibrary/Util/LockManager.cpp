@@ -79,7 +79,7 @@ LockScope::LockScope(Lock * lock, wstring fileName, int lineNo)
 	lock_ = lock;
 
 	Lock* deadLock = LockManager::Instance().searchLockCycle(lock_);
-	if (!deadLock)
+	if (deadLock != nullptr)
 	{
 		// TODO : LOG
 		return;

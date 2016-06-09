@@ -15,7 +15,7 @@ private:
 	WSABUF wBuf_;
 
 	array<char, SIZE_IO_MAX> buffer_;
-	IO_TYPE type_;
+	IO_TYPE type_ = IO_END;
 
 public:
 	IoData()
