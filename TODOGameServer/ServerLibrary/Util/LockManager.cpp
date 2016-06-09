@@ -18,7 +18,7 @@ Lock::~Lock()
 	name_.clear();
 }
 
-void Lock::lock(string fileName, int lineNo)
+void Lock::lock(wstring fileName, int lineNo)
 {
 	mutex_.lock();
 
@@ -72,7 +72,7 @@ Lock * LockManager::searchLockCycle(Lock * newLock)
 	return deadLock;
 }
 
-LockScope::LockScope(Lock * lock, string fileName, int lineNo)
+LockScope::LockScope(Lock * lock, wstring fileName, int lineNo)
 {
 	if (!lock)
 		return;

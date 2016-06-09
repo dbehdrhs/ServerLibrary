@@ -26,5 +26,7 @@ private:
 	int maxCount_;
 	int sessionCount_;
 	int sessionId_;
+
+	Lock lock_;
 };
 

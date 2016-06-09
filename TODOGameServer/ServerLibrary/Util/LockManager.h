@@ -10,13 +10,13 @@ private:
 	size_t lockId_;
 	size_t threadId_;
 
-	string lockFile_;
+	wstring lockFile_;
 	int lockLine_;
 public:
 	Lock(char* name);
 	virtual ~Lock();
 
-	void lock(string fileName, int lineNo);
+	void lock(wstring fileName, int lineNo);
 	void unlock();
 
 	const char* name() { return name_.data(); }
@@ -34,7 +34,7 @@ private:
 	Lock* lock_;
 
 public:
-	LockScope(Lock* lock, string fileName, int lineNo);
+	LockScope(Lock* lock, wstring fileName, int lineNo);
 	~LockScope();
 };
 
