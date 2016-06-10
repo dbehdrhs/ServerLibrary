@@ -5,9 +5,10 @@
 
 void Process()
 {
-	SessionManager::Instance();
+	//SessionManager::Instance();
 	IocpServer* server = new IocpServer();
 
+	// 서버를 종료할 command
 	while (!g_shutDown)
 	{
 		int a; 
@@ -21,7 +22,7 @@ int main()
 {
 	Process();
 
-	xml_t xml;
+	/*xml_t xml;
 	LoadConfig(&xml);
 	xmlNode_t* root = xml.FirstChildElement("App")->FirstChildElement("Contents");
 	if (!root)
@@ -31,7 +32,7 @@ int main()
 	xmlNode_t* node = root->FirstChildElement("ThreadCount");
 	int processCount = 0;
 	node->GetText();
-	sscanf_s(node->GetText(), "%d", &processCount);
+	sscanf_s(node->GetText(), "%d", &processCount);*/
 
 	//node = xml.FirstChild()->FirstChild();
 	//xml.FirstChild();

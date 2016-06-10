@@ -23,13 +23,6 @@ void SessionManager::Init()
 	maxCount_ = SESSION_CAPACITY;
 	sessionId_ = 1;
 	sessionCount_ = 0;
-
-	////
-	for (int i = 0; i < SESSION_CAPACITY; i++)
-	{
-		IocpSession* session = new IocpSession;
-		AddSession(session);
-	}
 }
 
 void SessionManager::Release()

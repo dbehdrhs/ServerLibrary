@@ -1,6 +1,8 @@
 #pragma once
 #include "BaseServer.h"
 
+#define MAX_IOCP_THREAD_COUNT		SIZE_64
+
 class IocpServer :	public BaseServer
 {
 public:
@@ -16,6 +18,8 @@ public:
 	virtual bool OnRecv() override;
 	//bool OnSend();
 
+	void run();
+
 	bool OnAccept(SOCKET clientSock, SOCKADDR_IN clientAddr);
 	// AcceptThread
 	// WorkerThread
@@ -30,6 +34,9 @@ private:
 
 private:
 	HANDLE iocp_;
+
+	Thread* acceptThread_;
+	array<Thread*, MAX_IOCP_THREAD_COUNT> workerThread_;
 };
 
 

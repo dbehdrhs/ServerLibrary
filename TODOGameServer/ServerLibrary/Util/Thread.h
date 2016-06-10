@@ -1,6 +1,6 @@
 #pragma once
 
-#define MAKE_THREAD(className, func)  (new Thread(new thread_t(&className##::##func	, this), L#className))
+#define MAKE_THREAD(className, func)  (new Thread(new thread_t(&className##::##func	, this), #className))
 
 class Thread
 {

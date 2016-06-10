@@ -42,7 +42,7 @@ bool BaseServer::Init(xml_t config)
 	
 	root = config.FirstChildElement("App");
 	elem = root->FirstChildElement("Name");
-	printf("[INFO] Start %s Server", elem->GetText());
+	printf("[INFO] Start %s Server\n", elem->GetText());
 
 	status_ = SERVER_INITIALIZE;
 

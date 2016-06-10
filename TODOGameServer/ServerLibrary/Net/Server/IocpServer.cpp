@@ -14,7 +14,12 @@ IocpServer::~IocpServer()
 
 void IocpServer::Init()
 {
+	if (!CreateListenSocket())
+		return;
+
 	iocp_ = CreateIoCompletionPort(INVALID_HANDLE_VALUE, NULL, 0, workerThreadCount_);
+
+	run();
 }
 
 void IocpServer::Release()
@@ -49,6 +54,34 @@ bool IocpServer::CreateListenSocket()
 	}
 
 	return true;
+}
+
+void IocpServer::run()
+{
+	if (MAX_IOCP_THREAD_COUNT < workerThreadCount_)
+	{
+		// workerThread limit over;
+	}
+
+	acceptThread_ = MAKE_THREAD(IocpServer, AcceptThread);
+
+	for (int i = 0; i < workerThreadCount_; i++)
+	{
+		workerThread_[i] = MAKE_THREAD(IocpServer, WorkerThread);
+	}
+
+	status_ = SERVER_RUN;
+
+	// Iocp서버에서 처리할 command
+	while (!g_shutDown)
+	{
+		// command 입력
+		array<char, SIZE_64> cmdLine;
+		cout << "input command : ";
+		cin >> cmdLine.data();
+		cout << cmdLine.data() << endl;
+		//cout << "command : " << cmdLine.data() << endl;
+	}
 }
 
 bool IocpServer::OnAccept(SOCKET clientSock, SOCKADDR_IN clientAddr)
