@@ -57,4 +57,3 @@ public:
 private:
 	IoData ioData_[IO_END];
 };
-

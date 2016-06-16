@@ -3,6 +3,9 @@
 
 class WSA
 {
+private:
+	WSADATA wsa_;
+
 public:
 	WSA()
 	{
@@ -25,8 +28,6 @@ public:
 		WSACleanup();
 		cout << "[INFO] WSACleanup OK" << endl;
 	}
-private:
-	WSADATA wsa_;
 };
 
 static WSA wsa;

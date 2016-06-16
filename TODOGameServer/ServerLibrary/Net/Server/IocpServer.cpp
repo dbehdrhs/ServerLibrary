@@ -19,7 +19,7 @@ void IocpServer::Init()
 
 	iocp_ = CreateIoCompletionPort(INVALID_HANDLE_VALUE, NULL, 0, workerThreadCount_);
 
-	run();
+	//run();
 }
 
 void IocpServer::Release()
@@ -72,7 +72,7 @@ void IocpServer::run()
 
 	status_ = SERVER_RUN;
 
-	// Iocp서버에서 처리할 command
+	//Iocp서버에서 처리할 command
 	while (!g_shutDown)
 	{
 		// command 입력
@@ -80,8 +80,19 @@ void IocpServer::run()
 		cout << "input command : ";
 		cin >> cmdLine.data();
 		cout << cmdLine.data() << endl;
+		g_shutDown = true;
 		//cout << "command : " << cmdLine.data() << endl;
 	}
+
+	for (int i = 0; i < workerThreadCount_; i++)
+	{
+		PostQueuedCompletionStatus(iocp_, 0, 0, 0);
+	}
+}
+
+void IocpServer::serverEnd()
+{
+	status_ = SERVER_STOP;
 }
 
 bool IocpServer::OnAccept(SOCKET clientSock, SOCKADDR_IN clientAddr)
@@ -123,9 +134,11 @@ DWORD IocpServer::AcceptThread(PVOID pParam)
 
 		SOCKET clientSock = WSAAccept(server->ListenSocket(), (SOCKADDR*)&clientAddr, &addrLen, NULL, NULL);
 
-		if (clientSock == SOCKET_ERROR)
+		if (clientSock == INVALID_SOCKET)
 		{
 			// ERROR
+			GetLastError();
+			return 0;
 		}
 
 		server->OnAccept(clientSock, clientAddr);

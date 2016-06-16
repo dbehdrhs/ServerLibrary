@@ -20,6 +20,8 @@ public:
 
 	void run();
 
+	void serverEnd();
+
 	bool OnAccept(SOCKET clientSock, SOCKADDR_IN clientAddr);
 	// AcceptThread
 	// WorkerThread

@@ -5,16 +5,11 @@
 
 void Process()
 {
-	//SessionManager::Instance();
-	IocpServer* server = new IocpServer();
+	/*IocpServer* server = new IocpServer();
 
-	// 서버를 종료할 command
-	while (!g_shutDown)
-	{
-		int a; 
-		cin >> a;
-		g_shutDown = true;
-	}
+	server->run();
+
+	SAFE_DELETE(server);*/
 }
 
 

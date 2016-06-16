@@ -30,6 +30,8 @@ BOOL BaseSocket::CreateSocket(int af, int type, int protocol)
 
 bool BaseSocket::CloseSocket()
 {
+	shutdown(sock_, SD_BOTH);
+
 	if (sock_ != INVALID_SOCKET)
 	{
 		// TODO : Check read and write stream. shutdown();

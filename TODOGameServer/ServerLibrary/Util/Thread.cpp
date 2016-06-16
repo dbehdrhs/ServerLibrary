@@ -31,9 +31,12 @@ void Thread::Release()
 //----------------------------------------------------
 ThreadManager::~ThreadManager()
 {
-	for (auto iter : threadPool_)
+	auto iter = threadPool_.begin();
+	while(!threadPool_.empty())
 	{
-		SAFE_DELETE(iter.second);
+		this->Erase(iter->second->Id());
+
+		iter = threadPool_.begin();
 	}
 
 	cout << "[INFO] ThreadManager Release" << endl;
@@ -57,7 +60,6 @@ void ThreadManager::Erase(size_t id)
 	}
 
 	threadPool_.erase(iter);
-	SAFE_DELETE(iter->second);
 
 	cout << "thread pop" << endl;
 }

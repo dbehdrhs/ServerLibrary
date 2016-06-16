@@ -51,6 +51,7 @@ bool BaseServer::Init(xml_t config)
 
 void BaseServer::Release()
 {
+	shutdown(listenSocket_, SD_BOTH);
 	status_ = SERVER_STOP;
 
 	cout << "[INFO] BaseServer End" << endl;

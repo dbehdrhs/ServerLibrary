@@ -13,12 +13,12 @@
 
 #define GET_CURRENT_THREAD_ID		hash<thread::id>()(this_thread::get_id())
 
-typedef TiXmlDocument	xml_t;
-typedef TiXmlElement	xmlNode_t;
-typedef TiXmlHandle		xmlHandle_t;
+typedef TiXmlDocument			xml_t;
+typedef TiXmlElement			xmlNode_t;
+typedef TiXmlHandle				xmlHandle_t;
 
-typedef std::recursive_mutex lock_t;
-typedef std::thread		thread_t;
+typedef std::recursive_mutex	lock_t;
+typedef std::thread				thread_t;
 
 #define SAFE_DELETE(data)	\
 {							\
