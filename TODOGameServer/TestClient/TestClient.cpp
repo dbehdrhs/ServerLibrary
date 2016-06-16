@@ -5,6 +5,8 @@
 
 void Process()
 {
+	// TODO : 밑에 부분 주석 해제 시 Library의 헤더?가 두 번씩 include 되는 것 같다.
+	// header파일에 static으로 만든 객체들의 생성자, 소멸자가 두 번씩 호출된다.
 	/*IocpServer* server = new IocpServer();
 
 	server->run();
